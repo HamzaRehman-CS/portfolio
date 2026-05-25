@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Nunito:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 8rem;
+    --space-2xl: 16rem;
+
+    --background: 0 0% 8.2%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 12.5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 8.2%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 193 100% 50%;
+    --primary-foreground: 0 0% 8.2%;
+    --secondary: 0 0% 12.5%;
+    --secondary-foreground: 0 0% 72%;
+    --muted: 0 0% 12.5%;
+    --muted-foreground: 0 0% 53%;
+    --accent: 193 100% 50%;
+    --accent-foreground: 0 0% 8.2%;
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 193 100% 50%;
+    --radius: 0.75rem;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: #151515;
+    color: #FFFFFF;
+    font-family: 'Nunito', system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: rgba(0, 212, 255, 0.3);
+    color: #FFFFFF;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #151515;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #444;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(32, 32, 32, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out, border-color 0.4s ease-out;
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.6;
+    transition: opacity 0.4s ease-out;
+  }
+
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: radial-gradient(ellipse at 50% 0%, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-card:hover::before {
+    opacity: 1;
+  }
+
+  .perspective-container {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 12px rgba(0, 212, 255, 0.3);
+  }
+
+  .section-padding {
+    padding-top: 16rem;
+    padding-bottom: 16rem;
+  }
+
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9000;
+    opacity: 0.03;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  .grid-pattern {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.04;
+    background-image:
+      linear-gradient(rgba(183, 183, 183, 1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(183, 183, 183, 1) 1px, transparent 1px);
+    background-size: 100px 100px;
+  }
+}
+
+@layer utilities {
+  .text-display-xl {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: clamp(3rem, 15vw, 216px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    text-transform: lowercase;
+  }
+
+  .text-display-lg {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: clamp(2.2rem, 7.5vw, 96px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+  }
+
+  .text-display-md {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: clamp(1.8rem, 5.5vw, 72px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+  }
+
+  .text-h1 {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: clamp(1.75rem, 8.75vw, 126px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    text-transform: lowercase;
+  }
+
+  .text-h2 {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: clamp(1.5rem, 6.25vw, 90px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    text-transform: lowercase;
+  }
+
+  .text-h3 {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: clamp(1.25rem, 5vw, 72px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    text-transform: lowercase;
+  }
+
+  .text-h4 {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: clamp(1.1rem, 3.75vw, 54px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    text-transform: lowercase;
+  }
+
+  .text-h5 {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: clamp(1rem, 2.5vw, 36px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    text-transform: lowercase;
+  }
+
+  .text-body-lg {
+    font-family: 'Nunito', system-ui, sans-serif;
+    font-size: clamp(0.875rem, 1.125vw, 16.2px);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .text-body {
+    font-family: 'Nunito', system-ui, sans-serif;
+    font-size: clamp(0.8125rem, 1vw, 14.4px);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .text-label {
+    font-family: 'Nunito', system-ui, sans-serif;
+    font-size: clamp(0.625rem, 0.875vw, 12.6px);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .text-caption {
+    font-family: 'Nunito', system-ui, sans-serif;
+    font-size: clamp(0.625rem, 0.75vw, 10.8px);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Premium CSS Mesh Gradient Animations */
+@keyframes mesh-orb-1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(40px, -60px) scale(1.15);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+}
+
+@keyframes mesh-orb-2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(-50px, 40px) scale(1.08);
+  }
+}
+
+@keyframes mesh-orb-3 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  40% {
+    transform: translate(30px, 30px) scale(0.85);
+  }
+  70% {
+    transform: translate(-40px, -20px) scale(1.12);
+  }
+}
+
+.animate-mesh-orb-1 {
+  animation: mesh-orb-1 25s infinite alternate ease-in-out;
+  will-change: transform;
+}
+
+.animate-mesh-orb-2 {
+  animation: mesh-orb-2 30s infinite alternate ease-in-out;
+  will-change: transform;
+}
+
+.animate-mesh-orb-3 {
+  animation: mesh-orb-3 20s infinite alternate ease-in-out;
+  will-change: transform;
+}
+
