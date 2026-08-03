@@ -12,6 +12,28 @@ export interface Work {
 
 export const works: Work[] = [
   {
+    id: 7,
+    title: 'Idea – 3D Interactive World',
+    category: '3D Frontend Design',
+    year: '2026',
+    image: '/idea_3d.png',
+    color: 'from-cyan-500/20 to-blue-600/20',
+    link: 'https://my-idea-1.netlify.app/',
+    description: 'An immersive 3D interactive hero section where a glowing light trail guides the user through futuristic building architectures, illuminating structures along the scroll path before ending with a dramatic rocket launch sequence.',
+    status: 'Live',
+  },
+  {
+    id: 8,
+    title: 'Geythere.mv',
+    category: '3D Interactive Showcase',
+    year: '2026',
+    image: '/geythere_3d.png',
+    color: 'from-teal-500/20 to-emerald-600/20',
+    link: 'https://demo-geythere.netlify.app/',
+    description: 'A custom 3D interactive scroll-driven client showcase designed for a Maldivian home & utility brand, seamlessly guiding visitors through a virtual room as furniture and products interactively pack and present themselves upon scrolling.',
+    status: 'Live',
+  },
+  {
     id: 3,
     title: 'Daan Sports',
     category: 'B2B Catalog Website',

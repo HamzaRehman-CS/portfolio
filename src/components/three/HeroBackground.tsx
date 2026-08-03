@@ -82,9 +82,9 @@ export function HeroBackground() {
       <Canvas
         orthographic
         camera={{ zoom: 1, position: [0, 0, 1] }}
-        dpr={[1, 2]}
+        dpr={1}
         style={{ width: '100%', height: '100%' }}
-        gl={{ alpha: true, antialias: false }}
+        gl={{ alpha: true, antialias: false, powerPreference: 'high-performance' }}
       >
         <GradientPlane />
       </Canvas>

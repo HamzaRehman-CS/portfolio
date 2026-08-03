@@ -14,6 +14,7 @@ import { SkillsSection } from '@/sections/SkillsSection';
 import { TestimonialsSection } from '@/sections/TestimonialsSection';
 import { ContactSection } from '@/sections/ContactSection';
 import { Footer } from '@/sections/Footer';
+import { AIChatbot } from '@/components/AIChatbot';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,7 +27,8 @@ function App() {
 
     if (!isMobile) {
       const lenis = new Lenis({
-        lerp: 0.1,
+        lerp: 0.12,
+        duration: 1.2,
         smoothWheel: true,
       });
 
@@ -35,15 +37,15 @@ function App() {
       // Sync Lenis with GSAP ScrollTrigger
       lenis.on('scroll', ScrollTrigger.update);
 
-      gsap.ticker.add((time) => {
+      const updateRaf = (time: number) => {
         lenis.raf(time * 1000);
-      });
+      };
 
-      gsap.ticker.lagSmoothing(0);
+      gsap.ticker.add(updateRaf);
 
       return () => {
         lenis.destroy();
-        gsap.ticker.remove(lenis.raf as unknown as gsap.TickerCallback);
+        gsap.ticker.remove(updateRaf);
       };
     }
   }, []);
@@ -67,6 +69,9 @@ function App() {
           <ContactSection />
           <Footer />
         </main>
+
+        {/* AI Portfolio Assistant */}
+        <AIChatbot />
       </div>
     </CursorProvider>
   );
