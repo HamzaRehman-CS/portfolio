@@ -1,28 +1,13 @@
-import { useState, useEffect } from 'react';
-
+import { useCallback, useSyncExternalStore } from 'react';
 export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
+  const subscribe = useCallback((callback: () => void) => {
     const media = window.matchMedia(query);
-    setMatches(media.matches);
-
-    const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
-    media.addEventListener('change', handler);
-    return () => media.removeEventListener('change', handler);
+    media.addEventListener('change', callback);
+    return () => media.removeEventListener('change', callback);
   }, [query]);
-
-  return matches;
+  const getSnapshot = useCallback(() => window.matchMedia(query).matches, [query]);
+  return useSyncExternalStore(subscribe, getSnapshot, () => false);
 }
-
-export function useIsMobile(): boolean {
-  return useMediaQuery('(max-width: 767px)');
-}
-
-export function useIsTablet(): boolean {
-  return useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
-}
-
-export function useIsDesktop(): boolean {
-  return useMediaQuery('(min-width: 1024px)');
-}
+export function useIsMobile() { return useMediaQuery('(max-width: 767px)'); }
+export function useIsTablet() { return useMediaQuery('(min-width: 768px) and (max-width: 1023px)'); }
+export function useIsDesktop() { return useMediaQuery('(min-width: 1024px)'); }

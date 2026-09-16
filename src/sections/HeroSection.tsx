@@ -137,7 +137,7 @@ export function HeroSection() {
             className="text-body-lg text-text-secondary mt-4 max-w-md mx-auto lg:mx-0 font-light"
             style={{ opacity: 0 }}
           >
-            I am a CS student and a passionate learner, driven by curiosity to know about and work with new technologies. I specialize in building intelligent AI solutions, responsive websites, and creative designs.
+            I’m Hamza. I design and build modern websites, interactive 3D experiences, and AI-powered digital products.
           </p>
 
           <div

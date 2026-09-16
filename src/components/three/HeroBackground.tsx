@@ -48,6 +48,7 @@ const fragmentShader = `
 
 function GradientPlane() {
   const meshRef = useRef<THREE.Mesh>(null);
+  const materialRef = useRef<THREE.ShaderMaterial>(null);
 
   const uniforms = useMemo(
     () => ({
@@ -59,13 +60,14 @@ function GradientPlane() {
   );
 
   useFrame(({ clock }) => {
-    uniforms.uTime.value = clock.getElapsedTime();
+    if (materialRef.current) materialRef.current.uniforms.uTime.value = clock.getElapsedTime();
   });
 
   return (
     <mesh ref={meshRef}>
       <planeGeometry args={[2, 2]} />
       <shaderMaterial
+        ref={materialRef}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
         uniforms={uniforms}

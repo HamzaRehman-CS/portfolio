@@ -91,7 +91,7 @@ export function SkillsSection() {
             .sort((a, b) => b.rating - a.rating)
             .map((skill) => {
               // Dynamically resolve Lucide Icon component
-              const IconComponent = (LucideIcons as any)[skill.iconName] || LucideIcons.HelpCircle;
+              const IconComponent = (LucideIcons as unknown as Record<string, LucideIcons.LucideIcon>)[skill.iconName] || LucideIcons.HelpCircle;
 
               return (
                 <GlassCard

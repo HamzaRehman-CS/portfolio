@@ -9,6 +9,7 @@ import { useIsDesktop } from '@/hooks/useMediaQuery';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const designImages = ['/design_basic.png', '/design_personal.png', '/design_diet.png'];
 export function WorksSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -24,7 +25,7 @@ export function WorksSection() {
 
   // Carousel slide state for graphic design passes
   const [designIndex, setDesignIndex] = useState(0);
-  const designImages = ['/design_basic.png', '/design_personal.png', '/design_diet.png'];
+
 
   // Handle escape key closure
   useEffect(() => {
@@ -73,7 +74,7 @@ export function WorksSection() {
               trigger: sectionRef.current,
               start: 'top 80%',
               end: 'bottom center',
-              scrub: 1.5,
+              scrub: 0.5,
             },
           }
         );
@@ -479,6 +480,30 @@ export function WorksSection() {
                             <li className="text-caption text-text-secondary/70 flex items-center gap-2">
                               <span className="w-1.5 h-1.5 bg-accent rounded-full" />
                               Garment-to-photo visualization system
+                            </li>
+                          </>
+                        )}
+                        {selectedWork.id === 7 && (
+                          <>
+                            <li className="text-caption text-text-secondary/70 flex items-center gap-2">
+                              <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
+                              Light-trail guided architectural 3D scroll physics
+                            </li>
+                            <li className="text-caption text-text-secondary/70 flex items-center gap-2">
+                              <span className="w-1.5 h-1.5 bg-accent rounded-full" />
+                              Building illumination & rocket launch scroll sequence
+                            </li>
+                          </>
+                        )}
+                        {selectedWork.id === 8 && (
+                          <>
+                            <li className="text-caption text-text-secondary/70 flex items-center gap-2">
+                              <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
+                              Interactive 3D virtual room & scroll-driven furniture packing
+                            </li>
+                            <li className="text-caption text-text-secondary/70 flex items-center gap-2">
+                              <span className="w-1.5 h-1.5 bg-accent rounded-full" />
+                              Custom client product showcase for Maldivian home goods brand
                             </li>
                           </>
                         )}

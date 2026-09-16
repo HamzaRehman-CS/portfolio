@@ -21,20 +21,11 @@ export function useScrollReveal<T extends HTMLElement>(
 ) {
   const ref = useRef<T>(null);
 
+  const { y=40, x=0, scale=1, duration=0.8, delay=0, stagger=0.1, start="top 80%", ease="power3.out", once=true } = options;
   useEffect(() => {
     if (!ref.current) return;
 
-    const {
-      y = 40,
-      x = 0,
-      scale = 1,
-      duration = 0.8,
-      delay = 0,
-      stagger = 0.1,
-      start = 'top 80%',
-      ease = 'power3.out',
-      once = true,
-    } = options;
+
 
     const children = ref.current.children.length > 0
       ? Array.from(ref.current.children)
@@ -68,7 +59,7 @@ export function useScrollReveal<T extends HTMLElement>(
     }, ref);
 
     return () => ctx.revert();
-  }, []);
+  }, [y, x, scale, duration, delay, stagger, start, ease, once]);
 
   return ref;
 }

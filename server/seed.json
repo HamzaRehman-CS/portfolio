@@ -1,0 +1,506 @@
+{
+  "profile": {
+    "name": "Hamza Rehman",
+    "initials": "hr",
+    "role": "Creative Developer · AI & 3D",
+    "eyebrow": "Creative developer · Haripur, Pakistan",
+    "headline": "Creative",
+    "headlineAccent": "by nature.",
+    "bio": "I’m Hamza. I design and build modern websites, interactive 3D experiences, and AI-powered digital products.",
+    "about": "A designer’s eye. A developer’s mind.\n\nI’m a Computer Science student at Pak-Austria Fachhochschule – IAST. I design and build modern web experiences, explore interactive 3D, and use AI and automation to turn ideas into working products.\n\nWeb × AI × 3D × Product Design",
+    "portrait": "/hamza_rehman.jpg",
+    "resume": "/Hamza_Rehman_CV.pdf",
+    "availability": "Available for new projects",
+    "available": true,
+    "location": "Haripur, Pakistan",
+    "email": "hamzarehmankhan001@gmail.com",
+    "phone": "+92 370 1929406",
+    "whatsapp": "https://wa.me/923701929406",
+    "contactTitle": "Let’s make it happen.",
+    "contactDescription": "Have a project in mind? Tell me a little about it.",
+    "footer": "",
+    "metaTitle": "Hamza Rehman — Creative Developer & Designer",
+    "metaDescription": "Explore Hamza Rehman’s work in full-stack development, immersive 3D websites, design, and AI automation.",
+    "heroCta": "Explore the work",
+    "resumeLabel": "Download résumé",
+    "contactCta": "Let’s talk",
+    "sculptureLabel": "",
+    "sculptureHint": ""
+  },
+  "sections": {
+    "works": {
+      "label": "Selected work",
+      "title": "A few things I’ve made.",
+      "description": "",
+      "visible": true
+    },
+    "about": {
+      "label": "The person behind the work",
+      "title": "A different perspective.",
+      "description": "",
+      "visible": true
+    },
+    "services": {
+      "label": "Expertise",
+      "title": "From idea to interaction.",
+      "description": "",
+      "visible": true
+    },
+    "skills": {
+      "label": "Toolkit",
+      "title": "Tools of the trade.",
+      "description": "",
+      "visible": true
+    },
+    "experience": {
+      "label": "Experience & education",
+      "title": "The story so far.",
+      "description": "",
+      "visible": true
+    },
+    "certificates": {
+      "label": "Credentials",
+      "title": "Never done learning.",
+      "description": "",
+      "visible": true
+    },
+    "testimonials": {
+      "label": "In their words",
+      "title": "From the people I work with.",
+      "description": "",
+      "visible": true
+    },
+    "contact": {
+      "label": "Contact",
+      "title": "Let’s talk.",
+      "description": "",
+      "visible": true
+    }
+  },
+  "navigation": [
+    {
+      "label": "Work",
+      "href": "#works"
+    },
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Expertise",
+      "href": "#skills"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact"
+    }
+  ],
+  "socials": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/hamza-rehman-577116360"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/hamza.__.rehman"
+    }
+  ],
+  "projects": [
+    {
+      "id": 7,
+      "title": "Idea – 3D Interactive World",
+      "category": "Interactive",
+      "year": "2026",
+      "image": "/idea_3d.png",
+      "link": "https://my-idea-1.netlify.app/",
+      "description": "An immersive 3D interactive hero section where a glowing light trail guides the user through futuristic building architectures, illuminating structures along the scroll path before ending with a dramatic rocket launch sequence.",
+      "status": "Live",
+      "gallery": [],
+      "featured": true
+    },
+    {
+      "id": 8,
+      "title": "Geythere.mv",
+      "category": "Interactive",
+      "year": "2026",
+      "image": "/geythere_3d.png",
+      "link": "https://demo-geythere.netlify.app/",
+      "description": "A custom 3D interactive scroll-driven client showcase designed for a Maldivian home & utility brand, seamlessly guiding visitors through a virtual room as furniture and products interactively pack and present themselves upon scrolling.",
+      "status": "Live",
+      "gallery": [],
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Daan Sports",
+      "category": "Web development",
+      "year": "2026",
+      "image": "/daan_sports.png",
+      "link": "https://daan-sports.vercel.app/",
+      "description": "A clean B2B catalog platform for a sports apparel manufacturer, showcasing customized teamwear and simple inquiry forms.",
+      "status": "Under Work",
+      "gallery": [],
+      "featured": false
+    },
+    {
+      "id": 2,
+      "title": "The Pillar Marketing",
+      "category": "Web development",
+      "year": "2026",
+      "image": "/pillar_marketing.png",
+      "link": "https://the-pillar-marketing.vercel.app/",
+      "description": "A modern corporate landing page and services showcase for a marketing agency showcasing branding solutions and marketing pillars.",
+      "status": "Under Work",
+      "gallery": [],
+      "featured": false
+    },
+    {
+      "id": 9,
+      "title": "AI Beyond Sigma",
+      "category": "Interactive",
+      "year": "2026",
+      "image": "/ai_beyond.png",
+      "link": "https://ai-beyond-sigma.vercel.app/",
+      "description": "An interactive 3D web experience engineered with Three.js and WebGL, featuring procedural metallic star meshes, a rotating card carousel, and fluid scroll-driven animations.",
+      "status": "Live",
+      "gallery": [],
+      "featured": true
+    },
+    {
+      "id": 10,
+      "title": "Voss Medical",
+      "category": "Web development",
+      "year": "2026",
+      "image": "/voss_medical.png",
+      "link": "https://clinic-demo-lovat-kappa.vercel.app/",
+      "description": "A modern clinic web experience featuring an interactive 3D particle DNA helix, Lenis smooth scrolling, GSAP parallax reveals, and responsive care cards.",
+      "status": "Live",
+      "gallery": [],
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "Brand & Card Designs",
+      "category": "Visual design",
+      "year": "2026",
+      "image": "/design_basic.png",
+      "link": "#",
+      "description": "Membership passes, training cards, and nutritional planners for Royale Muscle Factory.",
+      "status": "Live",
+      "gallery": [
+        "/design_basic.png",
+        "/design_personal.png",
+        "/design_diet.png"
+      ],
+      "featured": false
+    },
+    {
+      "id": 5,
+      "title": "AI Passport & ID Photo Automator",
+      "category": "AI tools",
+      "year": "2026",
+      "image": "/ai_photo_studio.png",
+      "link": "#",
+      "description": "An automated web utility that leverages AI to fit casual portraits into formal suits matching facial expressions, swaps backgrounds to solid colors, refines details, and exports print-ready PDFs.",
+      "status": "Live",
+      "gallery": [],
+      "featured": false
+    },
+    {
+      "id": 6,
+      "title": "AI Virtual Brand Try-On",
+      "category": "AI tools",
+      "year": "2026",
+      "image": "/ai_virtual_tryon.png",
+      "link": "#",
+      "description": "A visualization system for e-commerce and retail brands, allowing online customers to visualize how garments, accessories, or products look on their uploaded photos or models using AI try-on models.",
+      "status": "Live",
+      "gallery": [],
+      "featured": false
+    }
+  ],
+  "skills": [
+    {
+      "id": "ai-assisted",
+      "name": "AI-Assisted Development",
+      "rating": 5,
+      "description": "Leveraging advanced AI tooling and LLM workflows to accelerate software development and build intelligent apps.",
+      "iconName": "Sparkles",
+      "color": "#00D4FF"
+    },
+    {
+      "id": "react-js",
+      "name": "React & JavaScript",
+      "rating": 5,
+      "description": "Building interactive, state-driven web applications and clean component architectures with modern ES6+.",
+      "iconName": "Code2",
+      "color": "#61DAFB"
+    },
+    {
+      "id": "nodejs-apis",
+      "name": "Node.js & APIs",
+      "rating": 4,
+      "description": "Designing robust RESTful endpoints, backend microservices, server logic, and API integrations.",
+      "iconName": "Server",
+      "color": "#68A063"
+    },
+    {
+      "id": "supabase-mysql",
+      "name": "Supabase & MySQL",
+      "rating": 4,
+      "description": "Relational schema modeling, queries, authentication, and realtime cloud databases.",
+      "iconName": "Database",
+      "color": "#3ECF8E"
+    },
+    {
+      "id": "threejs-3d",
+      "name": "Three.js & 3D Web",
+      "rating": 5,
+      "description": "Creating immersive 3D web environments, WebGL shaders, camera interactions, and creative canvas experiences.",
+      "iconName": "Box",
+      "color": "#FF5B23"
+    },
+    {
+      "id": "tailwind-css",
+      "name": "Tailwind CSS",
+      "rating": 5,
+      "description": "Rapid, responsive styling with utility-first CSS, custom design tokens, and smooth UI animations.",
+      "iconName": "Palette",
+      "color": "#38BDF8"
+    },
+    {
+      "id": "ui-ux-design",
+      "name": "UI/UX Design",
+      "rating": 5,
+      "description": "Crafting intuitive user journeys, wireframes, high-fidelity prototypes, and user-centered interfaces.",
+      "iconName": "Layout",
+      "color": "#F24E1E"
+    },
+    {
+      "id": "responsive-design",
+      "name": "Responsive Design",
+      "rating": 5,
+      "description": "Fluid layouts and adaptive interfaces optimized for seamless performance on desktop, tablet, and mobile.",
+      "iconName": "Smartphone",
+      "color": "#1572B6"
+    },
+    {
+      "id": "wordpress-woocommerce",
+      "name": "WordPress & WooCommerce",
+      "rating": 4,
+      "description": "Custom theme creation, CMS architecture, e-commerce storefronts, and store customization.",
+      "iconName": "Globe",
+      "color": "#9B51E0"
+    },
+    {
+      "id": "automation",
+      "name": "Automation",
+      "rating": 4,
+      "description": "Automating repetitive tasks, web scraping, custom pipelines, and business workflow integrations.",
+      "iconName": "Cpu",
+      "color": "#00FA9A"
+    },
+    {
+      "id": "machine-learning",
+      "name": "Machine Learning",
+      "rating": 4,
+      "description": "Practical implementations of computer vision, NLP models, and machine learning pipelines.",
+      "iconName": "Binary",
+      "color": "#FF6B6B"
+    },
+    {
+      "id": "design-systems",
+      "name": "Design Systems",
+      "rating": 4,
+      "description": "Establishing reusable component libraries, typography hierarchies, and scalable visual consistency.",
+      "iconName": "Boxes",
+      "color": "#A020F0"
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "category": "Frontend",
+      "title": "Interactive Frontend Development",
+      "description": "Crafting modern, responsive React and JavaScript web applications with fluid animations, micro-interactions, and high performance."
+    },
+    {
+      "id": 2,
+      "category": "Full-Stack",
+      "title": "Full-Stack & API Integration",
+      "description": "Building robust end-to-end applications, connecting scalable backend services, RESTful APIs, and secure database architectures."
+    },
+    {
+      "id": 3,
+      "category": "Product Design",
+      "title": "UI/UX & Product Design",
+      "description": "Transforming complex concepts into intuitive user journeys, high-fidelity prototypes, and cohesive design systems."
+    },
+    {
+      "id": 4,
+      "category": "AI & Automation",
+      "title": "AI & Automation",
+      "description": "Deploying intelligent AI features, automated workflows, custom scripts, and smart solutions that turn concepts into working products."
+    },
+    {
+      "id": 5,
+      "category": "Interactive 3D",
+      "title": "3D Web Experiences",
+      "description": "Creating immersive 3D web environments, scroll-driven interactive worlds, Three.js scenes, and creative WebGL visual experiences."
+    },
+    {
+      "id": 6,
+      "category": "CMS & Commerce",
+      "title": "E-commerce & CMS",
+      "description": "Developing custom WooCommerce stores, WordPress platforms, and flexible content management systems tailored for growth."
+    }
+  ],
+  "experiences": [
+    {
+      "id": 6,
+      "type": "work",
+      "role": "Event Management Lead",
+      "organization": "Computer Science Society, Pak-Austria Fachhochschule - IAST",
+      "date": "2026 - Present",
+      "description": "Directing event coordination, managing logistics, planning tech symposiums, and organizing student workshops and code sprints.",
+      "location": "Haripur, Pakistan",
+      "image": ""
+    },
+    {
+      "id": 7,
+      "type": "work",
+      "role": "Freelance Web Developer",
+      "organization": "Royal Muscle Factory (Taimoor Khan)",
+      "date": "February 2026",
+      "description": "Developed a gym membership management web application automating member records, payment logs, and account controls. Built an admin dashboard for owner Taimoor Khan to manage subscriptions and card validity.",
+      "location": "Haripur, Pakistan",
+      "image": ""
+    },
+    {
+      "id": 5,
+      "type": "work",
+      "role": "Front End Development Intern",
+      "organization": "DevelopersHub Corporation",
+      "date": "22 July 2025 - 5 September 2025",
+      "description": "Successfully completed a six-week Virtual Internship Program in Front End Development with exceptional performance, gaining hands-on industry experience.",
+      "location": "Remote",
+      "image": "/certificates/developershub_internship.png"
+    },
+    {
+      "id": 1,
+      "type": "work",
+      "role": "Game Development Intern",
+      "organization": "Teknefy (powered by Robotics-World)",
+      "date": "15 July 2025 - 15 September 2025",
+      "description": "Completed a structured professional Internship Program in Game Development. Worked on active projects, game mechanics, and design pipelines. Certified under Student ID T-GDev-001.",
+      "location": "Haripur, Pakistan",
+      "image": "/certificates/teknefy_internship.jpg"
+    },
+    {
+      "id": 4,
+      "type": "education",
+      "role": "BS in Computer Science",
+      "organization": "Pak-Austria Fachhochschule - IAST",
+      "date": "2024 - Present",
+      "description": "Studying core Computer Science with specialization in software systems, algorithms, game design, and full stack engineering. Active in organizing university technical fairs.",
+      "location": "Haripur, Pakistan",
+      "image": ""
+    }
+  ],
+  "certificates": [
+    {
+      "id": 1,
+      "title": "Game Development Internship",
+      "issuer": "Teknefy (Robotics-World)",
+      "date": "15 Sep 2025",
+      "image": "/certificates/teknefy_internship.jpg",
+      "category": "Internship",
+      "description": "Awarded for completing a 2-month professional training program in Game Development, engineering game systems, and scripting interactive mechanics."
+    },
+    {
+      "id": 2,
+      "title": "Gamepreneurship Capacity Building",
+      "issuer": "USAID's ERDA & P@SHA",
+      "date": "26 Dec 2024",
+      "image": "/certificates/usaid_gamepreneurship.jpg",
+      "category": "Workshop",
+      "description": "One-day workshop on building scalable business models, game marketing, and funding strategies, hosted at Pak-Austria Fachhochschule-IAST."
+    },
+    {
+      "id": 3,
+      "title": "Blockchain & AI Workshop",
+      "issuer": "SecuredXWave (Avax Team1)",
+      "date": "3 Mar 2026",
+      "image": "/certificates/avax_blockchain_ai.jpg",
+      "category": "Workshop",
+      "description": "Certified participation in blockchain integrations, smart contract concepts, and AI agents workshop."
+    },
+    {
+      "id": 4,
+      "title": "Basic Programming & Business",
+      "issuer": "Giga Developers (Pvt) Ltd.",
+      "date": "27 Mar 2025",
+      "image": "/certificates/giga_developers.jpg",
+      "category": "Seminar",
+      "description": "Attended full-day training on corporate software practices, architectural patterns, and basic tech entrepreneurship workflows."
+    },
+    {
+      "id": 5,
+      "title": "EducationUSA Fair Organizer",
+      "issuer": "PAIMAN Alumni Trust",
+      "date": "9 Jan 2025",
+      "image": "/certificates/educationusa_fair.jpg",
+      "category": "Volunteering",
+      "description": "Recognized for invaluable contribution and organizer/volunteer support during the Khyber Pakhtunkhwa EducationUSA student outreach event."
+    },
+    {
+      "id": 6,
+      "title": "Gamepreneurship Volunteer Recognition",
+      "issuer": "Scale-Up PAF-IAST",
+      "date": "2025",
+      "image": "/certificates/gamepreneurship_recognition.png",
+      "category": "Recognition",
+      "description": "Recognized for outstanding volunteer support and best performance in Gamepreneurship 2025 at Pak-Austria Fachhochschule-IAST."
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Taimoor Khan",
+      "role": "Gym Owner",
+      "rating": 5,
+      "text": "Hamza ne hamare gym ke liye complete management web application develop ki, jisme QR scanning, member accounts aur admin controls sab kuch bohat smoothly kaam karta hai. Bohat professional aur reliable work.\n\nTranslation:\nHamza developed a complete gym management web application for us with QR scanning, member accounts, and powerful admin controls. Everything works smoothly and professionally."
+    },
+    {
+      "id": 2,
+      "name": "Taimoor Khan",
+      "role": "Gym Owner",
+      "rating": 4,
+      "text": "Hamza ne hamare gym ke liye unique logo aur premium gym membership cards design kiye jo hamare brand ko bohat professional look dete hain. Bohat hi creative aur visual design kaam hai.\n\nTranslation:\nHamza designed a unique logo and premium gym membership cards for our gym which gives our brand a highly professional look. Truly creative and visual design work."
+    },
+    {
+      "id": 3,
+      "name": "Waseem Khan",
+      "role": "Photo Studio Owner",
+      "rating": 5,
+      "text": "Hamza developed an incredible AI-powered automation tool for our photo studio that completely handles background edits, suit overlays, and print-ready PDF generation. Working with him was a fantastic experience—he delivered a highly professional and reliable solution that saves us hours of work every day."
+    }
+  ],
+  "appearance": {
+    "accent": "#ff5b23",
+    "motion": true
+  },
+  "heroArtwork": {
+    "mode": "text",
+    "logo": "",
+    "phrases": [
+      "WEB\nEXPERIENCES",
+      "AI ×\nDESIGN",
+      "3D ×\nCODE"
+    ],
+    "showEyebrow": false,
+    "eyebrow": "",
+    "showCaption": true,
+    "caption": "Play with it"
+  }
+}
