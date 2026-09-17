@@ -11,9 +11,29 @@ export interface ExperienceEntry {
 
 export const experiences: ExperienceEntry[] = [
   {
+    id: 8,
+    type: 'work',
+    role: 'Machine Learning & AI Fluency Intern',
+    organization: 'Flyrank AI',
+    date: 'June 2026 - September 2026',
+    description: 'Completed a specialized internship in Machine Learning and AI Fluency, building practical ML models, automated data workflows, and developing intelligent solutions.',
+    location: 'Remote',
+    image: '/certificates/flyrank_machine_learning.png',
+  },
+  {
+    id: 9,
+    type: 'certificate',
+    role: "McKinsey's Forward Program",
+    organization: 'McKinsey & Company',
+    date: 'June 2026 - July 2026',
+    description: "Completed McKinsey's Forward Program, developing foundational capabilities in practical leadership, problem-solving, digital fluency, and agile communication.",
+    location: 'Online',
+    image: '/certificates/mckinsey_forward.png',
+  },
+  {
     id: 6,
     type: 'work',
-    role: 'Event Management Lead',
+    role: 'Event Director',
     organization: 'Computer Science Society, Pak-Austria Fachhochschule - IAST',
     date: '2026 - Present',
     description: 'Directing event coordination, managing logistics, planning tech symposiums, and organizing student workshops and code sprints.',

@@ -30,26 +30,38 @@ export default function KineticSculpture({
   const [phrase, setPhrase] = useState(0);
   const particlesRef = useRef<Particle[]>([]);
 
-  const slides = artwork.phrases.filter(text => text.trim());
+  const isLogoItem = (str: string) => {
+    const s = str.trim().toLowerCase();
+    return s === '[logo]' || s === '__logo__' || s === 'logo';
+  };
+  const rawSlides = (artwork.phrases || []).filter(text => text.trim());
   const logoMode = artwork.mode === 'logo';
-  // If in text mode with slides, cycle includes HR Logo + each text slide
-  const cycle = !logoMode && slides.length > 0;
-  const totalSteps = cycle ? slides.length + 1 : 1;
-  const currentStep = cycle ? phrase % totalSteps : 0;
-  const isLogoNow = logoMode || currentStep === 0;
-  const textIndex = currentStep > 0 ? currentStep - 1 : 0;
-  const word = isLogoNow ? initials : slides[textIndex] || initials;
 
-  // Auto-advance every 4.2 seconds when motion is on
+  const hasExplicitLogo = rawSlides.some(isLogoItem);
+  const slides = logoMode
+    ? ['[logo]']
+    : (hasExplicitLogo ? rawSlides : (rawSlides.length > 0 ? ['[logo]', ...rawSlides] : ['[logo]']));
+
+  const cycle = !logoMode && slides.length > 1;
+  const totalSteps = logoMode ? 1 : slides.length;
+  const currentStep = cycle ? phrase % totalSteps : 0;
+  const currentSlide = slides[currentStep] || '';
+  const isLogoNow = logoMode || isLogoItem(currentSlide);
+  const word = isLogoNow ? initials : currentSlide;
+
+  // Transition timer in seconds, default 4s (between 1s and 30s)
+  const intervalSeconds = Math.max(1, Math.min(30, Number(artwork.interval) || 4));
+
+  // Auto-advance every intervalSeconds when motion is on
   useEffect(() => {
     if (!motion || !cycle) return;
     const timer = setInterval(() => {
       if (!document.hidden) {
         setPhrase(p => (p + 1) % totalSteps);
       }
-    }, 4200);
+    }, intervalSeconds * 1000);
     return () => clearInterval(timer);
-  }, [motion, cycle, totalSteps]);
+  }, [motion, cycle, totalSteps, intervalSeconds]);
 
   useEffect(() => {
     const element = canvas.current;
@@ -314,7 +326,7 @@ export default function KineticSculpture({
 
   const counterLabel = isLogoNow
     ? `HR / ${String(slides.length).padStart(2, '0')}`
-    : `${String(textIndex + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    : `${String(currentStep + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
 
   const contents = (
     <>
@@ -335,8 +347,8 @@ export default function KineticSculpture({
       onClick={() => setPhrase(value => (value + 1) % totalSteps)}
       aria-label={
         isLogoNow
-          ? `${owner} logo in interactive dots. Click for next slide.`
-          : `${word.replaceAll('\n', ' ')}. Slide ${textIndex + 1} of ${slides.length}`
+          ? `${owner} logo in interactive dots. Slide ${currentStep + 1} of ${slides.length}. Click for next slide.`
+          : `${word.replaceAll('\n', ' ')}. Slide ${currentStep + 1} of ${slides.length}`
       }
     >
       {contents}

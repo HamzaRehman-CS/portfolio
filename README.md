@@ -48,14 +48,22 @@ Terminate HTTPS at your reverse proxy. Production refuses to start with a non-HT
 
 ### Vercel deployment
 
-The Vercel configuration now routes API requests and uploaded files to a Node function. Connect a dedicated **Upstash Redis** database from the Vercel Marketplace and set these **server-only** environment variables for Production:
+The Vercel configuration routes API requests and uploaded files to a Node serverless function (`api/portfolio.mjs`). Connect **Supabase** (recommended) or a dedicated Upstash Redis database, and set these **server-only** environment variables in your Vercel Project Settings (*Settings > Environment Variables*):
 
-- UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN: from the database integration. Use the writable token; never prefix credentials with VITE_.
-- APP_ORIGIN: the exact HTTPS portfolio origin, without a trailing slash.
-- ADMIN_PASSWORD: a unique password of at least 12 characters, used only to initialize an empty store. Change it from Settings after signing in. Existing stored credentials are never reset by deployments.
-- PORTFOLIO_STORAGE_PREFIX: optional isolated namespace, default portfolio. Use a separate database or prefix for preview deployments.
+#### Option A: Supabase (Recommended)
+- `SUPABASE_URL`: `https://psnkgewiuqiahkgirdxz.supabase.co` (or your Supabase project URL)
+- `SUPABASE_SERVICE_ROLE_KEY`: your secret service_role key (e.g. `sb_secret_...`)
+- `SUPABASE_STORAGE_BUCKET`: `portfolio` (optional, defaults to `portfolio`)
 
-Use a durable database with eviction disabled and backups enabled. Content, salted password hashes, sessions, rate limits, inbox messages, and uploaded file bytes persist in Redis across function instances and deployments. For this personal portfolio, uploads are capped at 3 MB to fit Vercel's function payload limit after base64 encoding. This avoids requiring a second storage service. Database storage and request quotas still apply; monitor them in the provider dashboard.
+#### Option B: Upstash Redis
+- `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`: from your Upstash database integration.
+- `PORTFOLIO_STORAGE_PREFIX`: optional isolated namespace, default `portfolio`.
+
+#### General Variables
+- `APP_ORIGIN`: your live portfolio URL (e.g. `https://hamza-rehman.vercel.app`), optional if using standard Vercel domain.
+- `ADMIN_PASSWORD`: a unique password of at least 12 characters, used to initialize an empty store if needed. Existing credentials in the database/store are preserved.
+
+Content, salted password hashes, sessions, inbox messages, and uploaded files persist in Supabase across function instances and deployments.
 
 Redeploy after adding the environment variables. New visitors receive published content immediately; already-open visible pages refresh within five seconds, and other tabs in the same browser refresh on publication. Hidden tabs refresh when opened again. Use Publish to save a draft, including a replacement résumé under Content → Profile → Résumé.
 

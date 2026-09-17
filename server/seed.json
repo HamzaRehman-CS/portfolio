@@ -357,9 +357,29 @@
   ],
   "experiences": [
     {
+      "id": 8,
+      "type": "work",
+      "role": "Machine Learning & AI Fluency Intern",
+      "organization": "Flyrank AI",
+      "date": "June 2026 - September 2026",
+      "description": "Completed a specialized internship in Machine Learning and AI Fluency, building practical ML models, automated data workflows, and developing intelligent solutions.",
+      "location": "Remote",
+      "image": "/certificates/flyrank_machine_learning.png"
+    },
+    {
+      "id": 9,
+      "type": "certificate",
+      "role": "McKinsey's Forward Program",
+      "organization": "McKinsey & Company",
+      "date": "June 2026 - July 2026",
+      "description": "Completed McKinsey's Forward Program, developing foundational capabilities in practical leadership, problem-solving, digital fluency, and agile communication.",
+      "location": "Online",
+      "image": "/certificates/mckinsey_forward.png"
+    },
+    {
       "id": 6,
       "type": "work",
-      "role": "Event Management Lead",
+      "role": "Event Director",
       "organization": "Computer Science Society, Pak-Austria Fachhochschule - IAST",
       "date": "2026 - Present",
       "description": "Directing event coordination, managing logistics, planning tech symposiums, and organizing student workshops and code sprints.",
@@ -409,22 +429,31 @@
   ],
   "certificates": [
     {
-      "id": 1,
-      "title": "Game Development Internship",
-      "issuer": "Teknefy (Robotics-World)",
-      "date": "15 Sep 2025",
-      "image": "/certificates/teknefy_internship.jpg",
+      "id": 7,
+      "title": "Machine Learning Internship",
+      "issuer": "FlyRank Corp.",
+      "date": "14 Sep 2026",
+      "image": "/certificates/flyrank_machine_learning.png",
       "category": "Internship",
-      "description": "Awarded for completing a 2-month professional training program in Game Development, engineering game systems, and scripting interactive mechanics."
+      "description": "Completed the Machine Learning Internship Program at FlyRank.ai (ID: FR-D11-5D946-C56DE), demonstrating excellence in technical competency, ML pipelines, and collaborative engineering."
     },
     {
-      "id": 2,
-      "title": "Gamepreneurship Capacity Building",
-      "issuer": "USAID's ERDA & P@SHA",
-      "date": "26 Dec 2024",
-      "image": "/certificates/usaid_gamepreneurship.jpg",
-      "category": "Workshop",
-      "description": "One-day workshop on building scalable business models, game marketing, and funding strategies, hosted at Pak-Austria Fachhochschule-IAST."
+      "id": 8,
+      "title": "AI Fluency Internship",
+      "issuer": "FlyRank Corp.",
+      "date": "14 Sep 2026",
+      "image": "/certificates/flyrank_ai_fluency.png",
+      "category": "Internship",
+      "description": "Completed the AI Fluency Internship Program at FlyRank.ai (ID: FR-D11-91882-8DC0B), recognized for proficiency in advanced AI tools, workflow automation, and collaborative contribution."
+    },
+    {
+      "id": 9,
+      "title": "Forward Program",
+      "issuer": "McKinsey.org",
+      "date": "30 Jun 2026",
+      "image": "/certificates/mckinsey_forward.png",
+      "category": "Professional Program",
+      "description": "Awarded for successfully completing the McKinsey.org Forward online learning program, mastering future-of-work leadership, structured problem solving, adaptability, and digital toolkits."
     },
     {
       "id": 3,
@@ -436,6 +465,24 @@
       "description": "Certified participation in blockchain integrations, smart contract concepts, and AI agents workshop."
     },
     {
+      "id": 1,
+      "title": "Game Development Internship",
+      "issuer": "Teknefy (Robotics-World)",
+      "date": "15 Sep 2025",
+      "image": "/certificates/teknefy_internship.jpg",
+      "category": "Internship",
+      "description": "Awarded for completing a 2-month professional training program in Game Development, engineering game systems, and scripting interactive mechanics."
+    },
+    {
+      "id": 10,
+      "title": "Front End Development Internship",
+      "issuer": "DevelopersHub Corporation",
+      "date": "5 Sep 2025",
+      "image": "/certificates/developershub_internship.png",
+      "category": "Internship",
+      "description": "Awarded Best Award (DHC-78) for successfully completing a six-week Virtual Internship Program in Front End Development with exceptional performance."
+    },
+    {
       "id": 4,
       "title": "Basic Programming & Business",
       "issuer": "Giga Developers (Pvt) Ltd.",
@@ -443,6 +490,15 @@
       "image": "/certificates/giga_developers.jpg",
       "category": "Seminar",
       "description": "Attended full-day training on corporate software practices, architectural patterns, and basic tech entrepreneurship workflows."
+    },
+    {
+      "id": 6,
+      "title": "Gamepreneurship Volunteer Recognition",
+      "issuer": "Scale-Up PAF-IAST",
+      "date": "2025",
+      "image": "/certificates/gamepreneurship_recognition.png",
+      "category": "Recognition",
+      "description": "Recognized for outstanding volunteer support and best performance in Gamepreneurship 2025 at Pak-Austria Fachhochschule-IAST."
     },
     {
       "id": 5,
@@ -454,13 +510,13 @@
       "description": "Recognized for invaluable contribution and organizer/volunteer support during the Khyber Pakhtunkhwa EducationUSA student outreach event."
     },
     {
-      "id": 6,
-      "title": "Gamepreneurship Volunteer Recognition",
-      "issuer": "Scale-Up PAF-IAST",
-      "date": "2025",
-      "image": "/certificates/gamepreneurship_recognition.png",
-      "category": "Recognition",
-      "description": "Recognized for outstanding volunteer support and best performance in Gamepreneurship 2025 at Pak-Austria Fachhochschule-IAST."
+      "id": 2,
+      "title": "Gamepreneurship Capacity Building",
+      "issuer": "USAID's ERDA & P@SHA",
+      "date": "26 Dec 2024",
+      "image": "/certificates/usaid_gamepreneurship.jpg",
+      "category": "Workshop",
+      "description": "One-day workshop on building scalable business models, game marketing, and funding strategies, hosted at Pak-Austria Fachhochschule-IAST."
     }
   ],
   "testimonials": [
@@ -494,10 +550,12 @@
     "mode": "text",
     "logo": "",
     "phrases": [
+      "[logo]",
       "WEB\nEXPERIENCES",
       "AI ×\nDESIGN",
       "3D ×\nCODE"
     ],
+    "interval": 4,
     "showEyebrow": false,
     "eyebrow": "",
     "showCaption": true,

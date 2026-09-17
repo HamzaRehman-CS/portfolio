@@ -11,7 +11,8 @@ const heroArtwork = z.object({
   phrases:z.array(z.string().trim().min(1).max(60).refine(v=>v.split('\n').length<=3,'Use at most 3 lines per slide.')).min(1).max(12),
   showEyebrow:z.boolean(),eyebrow:z.string().max(80),
   showCaption:z.boolean(),caption:z.string().max(40),
-}).strict().default({mode:'logo',logo:'',phrases:['MAKE\nIT MOVE.','STAY\nCURIOUS.','WHAT\nIF?'],showEyebrow:false,eyebrow:'',showCaption:false,caption:'Play with possibility'});
+  interval:z.number().min(1).max(60).default(4),
+}).strict().default({mode:'logo',logo:'',phrases:['MAKE\nIT MOVE.','STAY\nCURIOUS.','WHAT\nIF?'],showEyebrow:false,eyebrow:'',showCaption:false,caption:'Play with possibility',interval:4});
 export const contentSchema = z.object({
   heroArtwork,
   appearance: z.object({accent:z.string().regex(/^#[0-9a-f]{6}$/i),motion:z.boolean()}).strict().default({accent:'#ff5b23',motion:true}),

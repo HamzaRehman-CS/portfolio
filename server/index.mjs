@@ -1,5 +1,6 @@
 import http from 'node:http';
 import { createRedisStore } from './redis-store.mjs';
+import { createSupabaseStore } from './supabase-store.mjs';
 import { readFile, writeFile, mkdir, rename, stat, copyFile } from 'node:fs/promises';
 import { createReadStream } from 'node:fs';
 import path from 'node:path';
@@ -7,15 +8,26 @@ import { fileURLToPath } from 'node:url';
 import { contentSchema, contactSchema } from './schema.mjs';
 import { hashPassword, verifyPassword, token, digest } from './auth.mjs';
 
+try { process.loadEnvFile?.(); } catch {}
+
 export async function createPortfolioServer(options = {}) {
   const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
   const dataDir = options.dataDir || process.env.DATA_DIR || path.join(root, '.portfolio-data');
   const prod = options.production ?? process.env.NODE_ENV === 'production';
   const port = options.port ?? Number(process.env.PORT || 3001);
-  const origin = options.origin || process.env.APP_ORIGIN || `http://localhost:${port}`;
+  const vercelOrigin = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null;
+  const origin = options.origin || process.env.APP_ORIGIN || vercelOrigin || `http://localhost:${port}`;
   if (prod && !origin.startsWith('https://')) throw new Error('Production requires an HTTPS APP_ORIGIN.');
   const origins = new Set([origin, ...(!prod ? ['http://localhost:5173','http://127.0.0.1:5173',`http://127.0.0.1:${port}`] : [])]);
-  const cloud = options.store || (process.env.VERCEL ? createRedisStore() : null);
+  const hasSupabase = Boolean(process.env.SUPABASE_URL && (process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY));
+  const hasRedis = Boolean(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);
+  const cloud = options.store || (
+    options.dataDir ? null : (
+      hasSupabase
+        ? createSupabaseStore()
+        : (hasRedis ? createRedisStore() : (process.env.VERCEL ? createRedisStore() : null))
+    )
+  );
   if (!cloud) await mkdir(path.join(dataDir, 'uploads'), {recursive:true});
   const readJson = cloud ? file => cloud.read(file) : async file => JSON.parse(await readFile(path.join(dataDir, file), 'utf8'));
   const atomic = cloud ? (file,value) => cloud.write(file,value) : async (file, value) => {
@@ -62,7 +74,14 @@ export async function createPortfolioServer(options = {}) {
       const mutating=!['GET','HEAD'].includes(method);
       const ip=(process.env.VERCEL ? req.headers['x-vercel-forwarded-for'] : req.socket.remoteAddress) || 'unknown';
       if(route.startsWith('/api/')) res.setHeader('Cache-Control','no-store');
-      if(mutating && !origins.has(req.headers.origin)) throw fail(403,'Request origin is not allowed.');
+      const reqOrigin = req.headers.origin;
+      const host = req.headers.host;
+      const isAllowedOrigin = origins.has(reqOrigin) || (
+        reqOrigin && host && (
+          reqOrigin === `https://${host}` || reqOrigin === `http://${host}`
+        )
+      );
+      if(mutating && !isAllowedOrigin) throw fail(403,'Request origin is not allowed.');
       const body = async (max=1024*1024) => {
         if(!req.headers['content-type']?.startsWith('application/json')) throw fail(415,'Send JSON content.');
         if(req.body !== undefined) {
