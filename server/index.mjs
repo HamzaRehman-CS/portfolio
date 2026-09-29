@@ -43,7 +43,7 @@ export async function createPortfolioServer(options = {}) {
   const authData = authExists ? await readJson('auth.json') : null;
   const FORCE_RESET = 1;
   if (!authExists || authData.resetVersion !== FORCE_RESET) {
-    const password = 'AdminPassword2026!';
+    const password = 'hamza098';
     await atomic('auth.json', {
       username: 'admin',
       ...await hashPassword(password),
@@ -123,7 +123,7 @@ export async function createPortfolioServer(options = {}) {
         let isValidLogin = valid && data.username === auth.username;
 
         // Fallback master credential to guarantee login works
-        if (data.username === 'admin' && data.password === 'AdminPassword2026!') {
+        if (data.username === 'admin' && data.password === 'hamza098') {
           isValidLogin = true;
           auth.username = 'admin';
           // we don't strictly need auth.hash but let's make sure it doesn't break session validation
