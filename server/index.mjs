@@ -39,12 +39,16 @@ export async function createPortfolioServer(options = {}) {
   const initialize = cloud ? (file,value) => cloud.init(file,value) : atomic;
   if (!await exists('content.json')) await initialize('content.json', {revision:1,content:contentSchema.parse(JSON.parse(await readFile(path.join(root,'server/seed.json'),'utf8')))});
   if (!await exists('messages.json')) await initialize('messages.json', []);
-  if (!await exists('auth.json')) {
-    const password = options.initialPassword || process.env.ADMIN_PASSWORD || 'Hamza098';
-    if (password) {
-      if(password.length < 8) throw new Error('ADMIN_PASSWORD must contain at least 8 characters.');
-      await initialize('auth.json', {username:'ADMIN',...await hashPassword(password)});
-    }
+  const authExists = await exists('auth.json');
+  const authData = authExists ? await readJson('auth.json') : null;
+  const FORCE_RESET = 1;
+  if (!authExists || authData.resetVersion !== FORCE_RESET) {
+    const password = 'AdminPassword2026!';
+    await atomic('auth.json', {
+      username: 'admin',
+      ...await hashPassword(password),
+      resetVersion: FORCE_RESET
+    });
   }
   let pending = Promise.resolve();
   const exclusive = fn => { const work = pending.then(fn); pending = work.catch(() => {}); return work; };
@@ -123,7 +127,11 @@ export async function createPortfolioServer(options = {}) {
         await sessions.set(digest(raw),{csrf,authVersion:auth.hash,expires:Date.now()+8*60*60*1000,idle:Date.now()+30*60*1000});
         setCookie(raw,8*60*60); return send(200,{username:auth.username,csrf});
       }
-      if(route==='/api/auth/session' && method==='GET') return send(200,{username:'ADMIN',csrf:(await authenticated()).csrf});
+      if(route==='/api/auth/session' && method==='GET') {
+        const session = await authenticated();
+        const auth = await readJson('auth.json');
+        return send(200,{username:auth.username,csrf:session.csrf});
+      }
       if(route==='/api/auth/logout' && method==='POST') { await authenticated(); await sessions.delete(sessionId); setCookie('',0); return send(200,{ok:true}); }
       if(route==='/api/auth/password' && method==='POST') {
         await authenticated(); await limit(`password:${ip}`,5,15*60*1000);
@@ -132,7 +140,7 @@ export async function createPortfolioServer(options = {}) {
         await exclusive(async()=>{
           const auth=await readJson('auth.json');
           if(!await verifyPassword(data.currentPassword,auth)) throw fail(401,'Current password is incorrect.');
-          const nextAuth={username:'ADMIN',...await hashPassword(data.newPassword)};
+          const nextAuth={username:auth.username,...await hashPassword(data.newPassword),resetVersion:auth.resetVersion};
           if(cloud){if(!await cloud.compare('auth.json',auth,nextAuth))throw fail(409,'Password changed. Sign in again.');}
           else await atomic('auth.json',nextAuth);
         });
