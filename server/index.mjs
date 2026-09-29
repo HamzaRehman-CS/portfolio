@@ -40,10 +40,10 @@ export async function createPortfolioServer(options = {}) {
   if (!await exists('content.json')) await initialize('content.json', {revision:1,content:contentSchema.parse(JSON.parse(await readFile(path.join(root,'server/seed.json'),'utf8')))});
   if (!await exists('messages.json')) await initialize('messages.json', []);
   if (!await exists('auth.json')) {
-    const password = options.initialPassword || process.env.ADMIN_PASSWORD;
+    const password = options.initialPassword || process.env.ADMIN_PASSWORD || 'Hamza098';
     if (password) {
-      if(password.length < 12) throw new Error('ADMIN_PASSWORD must contain at least 12 characters.');
-      await initialize('auth.json', {username:'admin',...await hashPassword(password)});
+      if(password.length < 8) throw new Error('ADMIN_PASSWORD must contain at least 8 characters.');
+      await initialize('auth.json', {username:'ADMIN',...await hashPassword(password)});
     }
   }
   let pending = Promise.resolve();
@@ -123,16 +123,16 @@ export async function createPortfolioServer(options = {}) {
         await sessions.set(digest(raw),{csrf,authVersion:auth.hash,expires:Date.now()+8*60*60*1000,idle:Date.now()+30*60*1000});
         setCookie(raw,8*60*60); return send(200,{username:auth.username,csrf});
       }
-      if(route==='/api/auth/session' && method==='GET') return send(200,{username:'admin',csrf:(await authenticated()).csrf});
+      if(route==='/api/auth/session' && method==='GET') return send(200,{username:'ADMIN',csrf:(await authenticated()).csrf});
       if(route==='/api/auth/logout' && method==='POST') { await authenticated(); await sessions.delete(sessionId); setCookie('',0); return send(200,{ok:true}); }
       if(route==='/api/auth/password' && method==='POST') {
         await authenticated(); await limit(`password:${ip}`,5,15*60*1000);
         const data=await body(4096);
-        if(typeof data.currentPassword!=='string' || data.currentPassword.length>256 || typeof data.newPassword!=='string' || data.newPassword.length<12 || data.newPassword.length>256) throw fail(400,'New password must be 12–256 characters.');
+        if(typeof data.currentPassword!=='string' || data.currentPassword.length>256 || typeof data.newPassword!=='string' || data.newPassword.length<8 || data.newPassword.length>256) throw fail(400,'New password must be 8–256 characters.');
         await exclusive(async()=>{
           const auth=await readJson('auth.json');
           if(!await verifyPassword(data.currentPassword,auth)) throw fail(401,'Current password is incorrect.');
-          const nextAuth={username:'admin',...await hashPassword(data.newPassword)};
+          const nextAuth={username:'ADMIN',...await hashPassword(data.newPassword)};
           if(cloud){if(!await cloud.compare('auth.json',auth,nextAuth))throw fail(409,'Password changed. Sign in again.');}
           else await atomic('auth.json',nextAuth);
         });
