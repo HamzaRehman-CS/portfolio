@@ -115,7 +115,6 @@ export async function createPortfolioServer(options = {}) {
         return send(200,{...data,content:contentSchema.parse(data.content)});
       }
       if(route==='/api/auth/login' && method==='POST') {
-        await limit(`login:${ip}`,8,15*60*1000); await limit('login:global',80,15*60*1000);
         const data=await body(4096);
         if(typeof data.username!=='string' || typeof data.password!=='string' || data.password.length>256) throw fail(400,'Enter your user ID and password.');
         if(!await exists('auth.json')) throw fail(503,'Admin setup is required on the server.');
@@ -144,7 +143,7 @@ export async function createPortfolioServer(options = {}) {
       }
       if(route==='/api/auth/logout' && method==='POST') { await authenticated(); await sessions.delete(sessionId); setCookie('',0); return send(200,{ok:true}); }
       if(route==='/api/auth/password' && method==='POST') {
-        await authenticated(); await limit(`password:${ip}`,5,15*60*1000);
+        await authenticated();
         const data=await body(4096);
         if(typeof data.currentPassword!=='string' || data.currentPassword.length>256 || typeof data.newPassword!=='string' || data.newPassword.length<8 || data.newPassword.length>256) throw fail(400,'New password must be 8–256 characters.');
         await exclusive(async()=>{
@@ -188,7 +187,7 @@ export async function createPortfolioServer(options = {}) {
         return send(201,{url:`/uploads/${filename}`});
       }
       if(route==='/api/contact' && method==='POST') {
-        await limit(`contact:${ip}`,5,15*60*1000); const data=contactSchema.safeParse(await body(16000));
+        const data=contactSchema.safeParse(await body(16000));
         if(!data.success) throw fail(400,'Enter your name, a valid email, and a message of 10–5000 characters.');
         if(data.data.company) return send(200,{ok:true});
         const message={id:token(),name:data.data.name,email:data.data.email,message:data.data.message,createdAt:new Date().toISOString()};
